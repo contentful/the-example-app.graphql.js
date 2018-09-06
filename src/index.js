@@ -1,14 +1,9 @@
+import React from 'react'
 import ReactDOM from 'react-dom';
 import './public/stylesheets/style.css'
 import Home from './components/Home'
-import Courses from './components/Courses'
+import { Router } from '@reach/router'
 
-import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom'
 import ApolloClient from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -48,15 +43,11 @@ const client = new ApolloClient({
 
 
 ReactDOM.render((
-  <Router>
-    <ApolloProvider client={client}>
-        <Route path='/' component={Home} />
-      <Switch>
-        <Route path='/courses' component={Courses} />
-        <Route path='/courses/categories' component={Courses} />
-      </Switch>
-    </ApolloProvider>
-  </Router>
+  <ApolloProvider client={client}>
+    <Router>
+      <Home path='/'></Home>
+    </Router>
+  </ApolloProvider>
   ),
   document.getElementById('root')
 )

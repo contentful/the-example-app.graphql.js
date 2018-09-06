@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ModuleCopy from './ModuleCopy'
@@ -53,7 +52,6 @@ ${fragments.HighlightedCourse}`
 const Home = () => {
   return (
     <div>
-      <Link to="/courses">Courses</Link>
       <Query query={query}>{
         ({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
