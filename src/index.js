@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import './public/stylesheets/style.css'
 import Home from './components/Home'
+import Layout from './components/Layout'
 import { Router } from '@reach/router'
 
 import ApolloClient from 'apollo-client'
@@ -44,9 +45,11 @@ const client = new ApolloClient({
 
 ReactDOM.render((
   <ApolloProvider client={client}>
-    <Router>
-      <Home path='/'></Home>
-    </Router>
+    <Layout>
+      <Router>
+          <Home path='/'></Home>
+      </Router>
+    </Layout>
   </ApolloProvider>
   ),
   document.getElementById('root')
