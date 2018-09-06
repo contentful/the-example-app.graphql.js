@@ -22,6 +22,7 @@ const Courses = () => {
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
+        console.log(error)
       return data.courseCollection.items.map(({ title, slug, shortDescription }) => (
         <div>
           <p>{title}</p>
