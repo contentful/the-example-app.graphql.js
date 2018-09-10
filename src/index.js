@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './public/stylesheets/style.css'
 import Home from './components/Home'
 import Layout from './components/Layout'
+import Courses from './components/Courses'
+import Course from './components/Course'
 import { Router } from '@reach/router'
 
 import ApolloClient from 'apollo-client'
@@ -48,6 +50,9 @@ ReactDOM.render((
     <Layout>
       <Router>
           <Home path='/'></Home>
+          <Courses path='/courses' />
+          <Courses path='/courses/categories/:category-slug' />
+          <Course path='/courses/:course-slug' />
       </Router>
     </Layout>
   </ApolloProvider>

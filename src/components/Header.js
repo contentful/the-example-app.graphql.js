@@ -25,7 +25,7 @@ const Header = () => {
             <div className="header__controls">
               <div className="header__controls_group">
                 <form action="" method="get">
-                  <div className="header__controls_label">API: Content Delivery API</div>
+                  <div className="header__controls_label">API: GraphQL Content Delivery API</div>
                   <div className="header__controls_dropdown">
                     <div className="header__controls_help_text">View the published or draft content by simply switching between the Deliver and Preview APIs.</div>
                     <button className="header__controls_button header__controls_button--active" type="submit" name="api" value="cda">Content Delivery API:<br />
