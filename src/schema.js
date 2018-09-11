@@ -47,6 +47,7 @@ const LessonImageFragment = gql`fragment LessonImageFragment on LessonImage {
   caption
   image {
     url
+    title
   }
 }`
 

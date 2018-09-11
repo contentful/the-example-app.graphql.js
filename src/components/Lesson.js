@@ -32,7 +32,6 @@ const Lesson = ({lessonSlug: slug}) => {
         <div className='lesson'>
           <h1 className='lesson__title'>{lesson.title}</h1>
           <div className='lesson__modules'>
-            LESSON YAY
             {moduleItems.length && moduleItems}
           </div>
         </div>
