@@ -9,10 +9,7 @@ class Layout extends React.Component {
     <div>
       <Header />
       <div className="main__content">
-        <div className="layout-centered"></div>
-        <div className="modules-container">
           {this.props.children}
-        </div>
       </div>
       <Footer />
     </div>

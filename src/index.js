@@ -4,7 +4,8 @@ import './public/stylesheets/style.css'
 import Home from './components/Home'
 import Layout from './components/Layout'
 import Courses from './components/Courses'
-import Course from './components/Course'
+import CourseOverview from './components/CourseOverview'
+import CourseLesson from './components/CourseLesson'
 import { Router } from '@reach/router'
 
 import ApolloClient from 'apollo-client'
@@ -52,7 +53,8 @@ ReactDOM.render((
           <Home path='/'></Home>
           <Courses path='/courses' />
           <Courses path='/courses/categories/:category-slug' />
-          <Course path='/courses/:course-slug' />
+          <CourseOverview path='/courses/:course-slug'></CourseOverview>
+          <CourseLesson path='/courses/:course-slug/lessons/:lesson-slug'></CourseLesson>
       </Router>
     </Layout>
   </ApolloProvider>

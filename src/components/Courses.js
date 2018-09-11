@@ -5,8 +5,8 @@ import CourseCard from './CourseCard'
 import SidebarMenu from './SidebarMenu'
 import { Link } from '@reach/router'
 
-const courseFragment = gql`
-  fragment CourseFragment on Course {
+const coursePreviewFragment = gql`
+  fragment CoursePreviewFragment on Course {
     slug
     title
     categoriesCollection {
@@ -35,11 +35,11 @@ const Courses = () => {
      {
       courseCollection {
         items {
-          ...CourseFragment
+          ...CoursePreviewFragment
         }
       }
     }
-    ${courseFragment}
+    ${coursePreviewFragment}
     `}
   >
     {({ loading, error, data }) => {
@@ -47,15 +47,28 @@ const Courses = () => {
       if (error) return <p>Error :(</p>;
       const courses = data.courseCollection.items
       //prep for sidebar
-      const menuLinks = [{link: '/courses', title: 'All courses'}]
+      const menuItems = [
+        <li key='All courses' className="sidebar-menu__item">
+          <Link className="sidebar-menu__link" to='/courses'>All courses</Link>
+        </li>
+      ]
       courses.forEach(({categoriesCollection}) => categoriesCollection.items.forEach(category => {
-        menuLinks.push({link: `/courses/categories/${category.slug}`, title: category.title})
+        menuItems.push(
+          <li key={category.title} className="sidebar-menu__item">
+            <Link className="sidebar-menu__link" to={`/courses/categories/${category.slug}`}>{category.title}</Link>
+          </li>)
       }))
       return (
         <div>
           <div className="layout-no-sidebar">{/*breadcrumb here!!!!*/}</div>
           <div className="layout-sidebar">
-            {<SidebarMenu title="Categories" links={menuLinks} />}
+            <SidebarMenu title="Categories">
+              <div className="sidebar-menu">
+                <ul className="sidebar-menu__list">
+                  {menuItems}
+                </ul>
+              </div>
+            </SidebarMenu>
             <section className="layout-sidebar__content">
               <div className="courses">
                 <h1>{'All courses (' + courses.length + ')'}</h1>
