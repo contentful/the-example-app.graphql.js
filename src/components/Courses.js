@@ -1,22 +1,7 @@
 import React from 'react'
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
 import CourseCard from './CourseCard'
-import SidebarMenu from './SidebarMenu'
 import { Link } from '@reach/router'
-
-const coursePreviewFragment = gql`
-  fragment CoursePreviewFragment on Course {
-    slug
-    title
-    categoriesCollection {
-      items {
-        title
-        slug
-      }
-    }
-    shortDescription
-  }`
+import CategoriesSidebar from './CategoriesSidebar'
 
 // const NavLink = (props) => {
 //   return (
@@ -29,23 +14,8 @@ const coursePreviewFragment = gql`
 //   )
 // }
 
-const Courses = () => {
-  return <Query
-    query={gql`
-     {
-      courseCollection {
-        items {
-          ...CoursePreviewFragment
-        }
-      }
-    }
-    ${coursePreviewFragment}
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
-      const courses = data.courseCollection.items
+const Courses = ({courseCollection, title}) => {
+  const courses = courseCollection.items
       //prep for sidebar
       const menuItems = [
         <li key='All courses' className="sidebar-menu__item">
@@ -59,19 +29,11 @@ const Courses = () => {
           </li>)
       }))
       return (
-        <div>
-          <div className="layout-no-sidebar">{/*breadcrumb here!!!!*/}</div>
-          <div className="layout-sidebar">
-            <SidebarMenu title="Categories">
-              <div className="sidebar-menu">
-                <ul className="sidebar-menu__list">
-                  {menuItems}
-                </ul>
-              </div>
-            </SidebarMenu>
+        <React.Fragment>
+            <CategoriesSidebar />
             <section className="layout-sidebar__content">
               <div className="courses">
-                <h1>{'All courses (' + courses.length + ')'}</h1>
+                <h1>{ title + ' (' + courses.length + ')'}</h1>
                 <div className="grid-list">
                   {courses.length &&
                     courses.map(course => {
@@ -83,11 +45,8 @@ const Courses = () => {
                 </div>
               </div>
             </section>
-          </div>
-        </div>
+        </React.Fragment>
       )
-    }}
-  </Query>
 }
 
 export default Courses

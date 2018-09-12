@@ -1,18 +1,20 @@
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import Breadcrumb from './Breadcrumb'
 
 class Layout extends React.Component {
 
   render() {
     return (
-    <div>
+    <React.Fragment>
       <Header />
       <div className="main__content">
-          {this.props.children}
+        <Breadcrumb />
+        {this.props.children}
       </div>
       <Footer />
-    </div>
+    </React.Fragment>
     )
   }
 }

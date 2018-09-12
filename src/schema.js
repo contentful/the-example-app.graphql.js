@@ -82,7 +82,65 @@ ${LessonImageFragment}
 ${LessonCopyFragment}
 `
 
+const coursePreviewFragment = gql`
+fragment CoursePreviewFragment on Course {
+  slug
+  title
+  categoriesCollection {
+    items {
+      title
+      slug
+    }
+  }
+  shortDescription
+}`
+
+const courses =gql`
+{
+ courseCollection {
+   items {
+     ...CoursePreviewFragment
+   }
+ }
+}
+${coursePreviewFragment}
+`
+
+const coursesOfCategory = gql`query CoursesOfCategory($slug: String!) {
+  categoryCollection(where: {slug: $slug}) {
+    items {
+      title
+      linkedFrom {
+        entryCollection {
+          items {
+            ...CoursePreviewFragment
+          }
+        }
+      }
+    }
+  }
+}
+${coursePreviewFragment}`
+
+const categoryFragment = gql`fragment CategoryFragment on Category {
+  title
+  slug
+}`
+
+const categories = gql`
+query Categories {
+  categoryCollection {
+    items {
+      ...CategoryFragment
+    }
+  }
+}
+${categoryFragment}`
+
 export {
   courseBySlug,
-  lessonBySlug
+  lessonBySlug,
+  courses,
+  coursesOfCategory,
+  categories
 }

@@ -23,7 +23,7 @@ const Course = ({course, children}) => {
     )
   })
   return (
-    <div>
+    <React.Fragment>
       <SidebarMenu title='Table of Contents'>
         <div className="table-of-contents">
           <div className="table-of-contents__list">
@@ -34,7 +34,7 @@ const Course = ({course, children}) => {
       <section className="layout-sidebar__content">
         {children}
       </section>
-    </div>
+    </React.Fragment>
   )
 }
 

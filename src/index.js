@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import './public/stylesheets/style.css'
 import Home from './components/Home'
 import Layout from './components/Layout'
-import Courses from './components/Courses'
 import CourseOverview from './components/CourseOverview'
 import CourseLesson from './components/CourseLesson'
+import CoursesAll from './components/CoursesAll'
+import CoursesCategory from './components/CoursesCategory'
+
 import { Router } from '@reach/router'
 
 import ApolloClient from 'apollo-client'
@@ -49,10 +51,10 @@ const client = new ApolloClient({
 ReactDOM.render((
   <ApolloProvider client={client}>
     <Layout>
-      <Router>
+      <Router className='layout-sidebar'>
           <Home path='/'></Home>
-          <Courses path='/courses' />
-          <Courses path='/courses/categories/:category-slug' />
+          <CoursesAll path='/courses' />
+          <CoursesCategory path='/courses/categories/:category-slug' />
           <CourseOverview path='/courses/:course-slug'></CourseOverview>
           <CourseLesson path='/courses/:course-slug/lessons/:lesson-slug'></CourseLesson>
       </Router>
