@@ -10,9 +10,6 @@ const Lesson = ({lessonSlug: slug}) => {
   {
     ({loading, error, data}) => {
       if (loading) return <p>Loading...</p>
-      console.log(data)
-      console.log(error)
-      console.log(data.lessonCollection.items.length)
       if (error || !data.lessonCollection || !data.lessonCollection.items.length) return <p>Error :(</p>
       const lesson = data.lessonCollection.items[0] //TODO is it ok tojust pick the first match?
       const moduleItems = lesson.modulesCollection.items.map(lessonModule => {
