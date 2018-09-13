@@ -51,11 +51,13 @@ const client = new ApolloClient({
 ReactDOM.render((
   <ApolloProvider client={client}>
     <Layout>
-      <Router className='layout-sidebar'>
+      <Router >
           <Home path='/'></Home>
           <CoursesAll path='/courses' />
+          <CoursesAll path='/courses/categories' />
           <CoursesCategory path='/courses/categories/:category-slug' />
           <CourseOverview path='/courses/:course-slug'></CourseOverview>
+          <CourseOverview path='/courses/:course-slug/lessons'></CourseOverview>
           <CourseLesson path='/courses/:course-slug/lessons/:lesson-slug'></CourseLesson>
       </Router>
     </Layout>

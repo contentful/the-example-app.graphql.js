@@ -24,7 +24,6 @@ const Lesson = ({lessonSlug: slug}) => {
             return null
         }
       })
-      console.log(moduleItems)
       return (
         <div className='lesson'>
           <h1 className='lesson__title'>{lesson.title}</h1>

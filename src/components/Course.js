@@ -18,12 +18,12 @@ const Course = ({course, children}) => {
   lessons.forEach(lesson => {
     sidebarLinks.push(
       <div key={lesson.slug} className='table-of-contents__item'>
-        <Link className='table-of-contents__link' to={`/courses/${course.slug}/lessons/${lesson.slug}` /*+query???*/}>${lesson.title}</Link>
+        <Link className='table-of-contents__link' to={`/courses/${course.slug}/lessons/${lesson.slug}` /*+query???*/}>{lesson.title}</Link>
       </div>
     )
   })
   return (
-    <React.Fragment>
+    <div className='layout-sidebar'>
       <SidebarMenu title='Table of Contents'>
         <div className="table-of-contents">
           <div className="table-of-contents__list">
@@ -34,7 +34,7 @@ const Course = ({course, children}) => {
       <section className="layout-sidebar__content">
         {children}
       </section>
-    </React.Fragment>
+    </div>
   )
 }
 
