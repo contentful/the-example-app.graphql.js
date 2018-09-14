@@ -2,7 +2,6 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import { coursesOfCategory } from '../schema'
 import Courses from './Courses'
-import Breadcrumb from './Breadcrumb'
 
 const CoursesCategory = (props) => {
   console.log(props)
@@ -16,7 +15,6 @@ const CoursesCategory = (props) => {
         const courseCollection = category.linkedFrom.entryCollection
         return (
           <React.Fragment>
-            <Breadcrumb path={props.uri} title={category.title} />
             <Courses courseCollection={courseCollection} title={category.title} />
           </React.Fragment>
         )

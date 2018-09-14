@@ -21,7 +21,7 @@ const Lesson = ({lessonSlug: slug}) => {
             case 'LessonCopy':
               return <LessonCopy key={lessonModule.title} {...lessonModule} />
             default:
-              return null
+              return null //factor out to util
           }
         })
         return (

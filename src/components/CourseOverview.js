@@ -3,7 +3,6 @@ import { Query } from 'react-apollo'
 import { courseBySlug } from '../schema'
 import Course from './Course'
 import IntroLesson from './IntroLesson'
-import Breadcrumb from './Breadcrumb'
 
 const CourseOverview = (props) => {
   const { 'course-slug': slug } = props
@@ -16,8 +15,8 @@ const CourseOverview = (props) => {
         console.log(course)
         return (
           <React.Fragment>
-            <Breadcrumb />
             <Course course={course}><IntroLesson course={course} /></Course>
+            {props.children}
           </React.Fragment>
         )
       }

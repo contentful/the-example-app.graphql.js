@@ -1,6 +1,8 @@
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import { Location } from '@reach/router'
+import Breadcrumb from './Breadcrumb'
 
 class Layout extends React.Component {
   render () {
@@ -8,6 +10,7 @@ class Layout extends React.Component {
       <React.Fragment>
         <Header />
         <div className='main__content'>
+          <Location>{({location}) => <Breadcrumb location={location} />}</Location>
           {this.props.children}
         </div>
         <Footer />
