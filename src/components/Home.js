@@ -1,9 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import ModuleCopy from './ModuleCopy'
-import ModuleHeroImage from './ModuleHeroImage'
-import ModuleHighlightedCourse from './ModuleHighlightedCourse'
+import { componentTypeMap } from '../helpers'
 
 const fragments = {
   HighlightedCourse: gql`
@@ -56,21 +54,12 @@ const Home = () => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>Error :(</p>
         return data.layoutCollection.items.map(item => {
-          return item.contentModulesCollection.items.map(contentModule => {
-            switch (contentModule.__typename) {
-              case 'LayoutHighlightedCourse':
-                return <ModuleHighlightedCourse key={item.slug} course={contentModule.course} />
-              case 'LayoutCopy':
-                return <ModuleCopy key={item.slug} />
-              case 'LayoutHeroImage':
-                return <ModuleHeroImage key={item.slug} />
-              default:
-                return null
-            }
-          })
+          return item.contentModulesCollection.items.map(contentModule =>
+            componentTypeMap(contentModule.__typename, { key: item.slug, ...contentModule }))
         })
       }
-    }</Query>
+    }
+    </Query>
   )
 }
 

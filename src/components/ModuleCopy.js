@@ -3,17 +3,17 @@ import { markdown } from '../helpers'
 
 // TODO check this is correct somehow
 const ModuleCopy = (props) => {
-  const { module } = props
-  const style = module.visualStyle === 'Emphasized' ? '--emphasized' : ''
+  const { visualStyle, headline, copy, ctaLink, ctaTitle } = props
+  const style = visualStyle === 'Emphasized' ? '--emphasized' : ''
   return (
     <div className={`module module-copy${style}`}>
       <div className={`module-copy__wrapper${style}`}>
         <div className={`module-copy__first${style}`}>
-          { module.headline && <h1 className={`module-copy__headline${style}`}>{module.headline}</h1> }
-          <div className={`module-copy__copy${style}`} dangerouslySetInnerHTML={markdown(module.copy)} />
+          { headline && <h1 className={`module-copy__headline${style}`}>{headline}</h1> }
+          <div className={`module-copy__copy${style}`} dangerouslySetInnerHTML={markdown(copy)} />
         </div>
         <div className={`module-copy__second${style}`}>
-          {module.ctaTitle && module.ctaLink && <a className={`module-copy__cta${style}`} href={module.ctaLink}>{module.ctaTitle}</a>}
+          {ctaTitle && ctaLink && <a className={`module-copy__cta${style}`} href={ctaLink}>{ctaTitle}</a>}
         </div>
       </div>
     </div>

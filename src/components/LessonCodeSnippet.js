@@ -8,7 +8,7 @@ const Snippet = (props) => {
   )
 }
 
-const CodeHeader = ({id, title, active, onClick}) => {
+const CodeHeader = ({ id, title, active, onClick }) => {
   return (
     <a key={id}
       onClick={() => onClick(id)}
@@ -19,7 +19,7 @@ const CodeHeader = ({id, title, active, onClick}) => {
 }
 
 class LessonCodeSnippet extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.onClick = this.onClick.bind(this)
     this.capitalize = this.capitalize.bind(this)
@@ -30,7 +30,7 @@ class LessonCodeSnippet extends React.Component {
     }
   }
 
-  onClick (id) {
+  onClick(id) {
     this.setState({
       active: id
     })
@@ -59,14 +59,14 @@ class LessonCodeSnippet extends React.Component {
     return (titles[platform]) ? titles[platform] : this.capitalize(platform)
   }
 
-  render () {
+  render() {
     const headers = []
     const snippets = []
     for (let prop in this.props) {
       if (prop === '__typename' || prop === 'title') {
         continue
       }
-      headers.push(<CodeHeader id={prop} title={this.getTitle(prop)} active={this.state.active === prop} onClick={this.onClick} />)
+      headers.push(<CodeHeader key={prop} id={prop} title={this.getTitle(prop)} active={this.state.active === prop} onClick={this.onClick} />)
       snippets.push(<Snippet key={prop} id={prop} type={this.getType(prop)} code={this.props[prop]} active={this.state.active === prop} />)
     }
     return (
