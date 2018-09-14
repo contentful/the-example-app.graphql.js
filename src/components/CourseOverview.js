@@ -12,7 +12,7 @@ const CourseOverview = (props) => {
       ({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>Error :(</p>
-        const course = data.courseCollection.items[0] //TODO IS IT OK to just pick the first one that matches?
+        const course = data.courseCollection.items[0] // TODO IS IT OK to just pick the first one that matches?
         console.log(course)
         return (
           <React.Fragment>

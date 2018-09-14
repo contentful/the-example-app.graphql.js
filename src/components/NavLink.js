@@ -9,9 +9,9 @@ const NavLink = props => (
       const className = (props.className) ? props.className : ''
       return {
         className: className + (current ? ' active' : '')
-      };
+      }
     }}
   />
-);
+)
 
 export default NavLink

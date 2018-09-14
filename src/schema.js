@@ -95,7 +95,7 @@ fragment CoursePreviewFragment on Course {
   shortDescription
 }`
 
-const courses =gql`
+const courses = gql`
 {
  courseCollection {
    items {

@@ -3,7 +3,7 @@ import { Query } from 'react-apollo'
 import Lesson from './Lesson'
 import Course from './Course'
 import { courseBySlug } from '../schema'
-import Breadcrumb from './Breadcrumb';
+import Breadcrumb from './Breadcrumb'
 
 const CourseLesson = (props) => {
   const { 'course-slug': slug, 'lesson-slug': lessonSlug } = props
@@ -12,7 +12,7 @@ const CourseLesson = (props) => {
       ({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>course lesson Error :(</p>
-        const course = data.courseCollection.items[0] //TODO IS IT OK to just pick the first one that matches?
+        const course = data.courseCollection.items[0] // TODO IS IT OK to just pick the first one that matches?
         return (
           <React.Fragment>
             <Breadcrumb />

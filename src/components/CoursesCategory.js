@@ -12,7 +12,7 @@ const CoursesCategory = (props) => {
       ({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error || data.categoryCollection.items.length < 1) return <p>Error :(</p>
-        const category = data.categoryCollection.items[0] //TODO is it okay to just take the first one that matches?
+        const category = data.categoryCollection.items[0] // TODO is it okay to just take the first one that matches?
         const courseCollection = category.linkedFrom.entryCollection
         return (
           <React.Fragment>

@@ -16,7 +16,7 @@ const Breadcrumb = (props) => {
   console.log(props)
   if (!props.path) {
     return null
-    //hack
+    // hack
   }
   const links = [<li key='home'><Link to='/'>Home</Link></li>]
   const crumbs = props.path.split('/')
@@ -25,16 +25,15 @@ const Breadcrumb = (props) => {
     if (crumb === '') {
       return
     }
-    if (i === crumbs.length -1) {
+    if (i === crumbs.length - 1) {
       links.push(<li key={props.path}><Link to={props.path}>{props.title}</Link></li>)
     } else if (pathRoutes[crumb] && pathTitles[crumb]) {
       links.push(<li key={pathRoutes[crumb]}><Link to={pathRoutes[crumb]}>{pathTitles[crumb]}</Link></li>)
     }
-    return
   })
   return (
     <div className='layout-no-sidebar'>
-      <nav className="breadcrumb">
+      <nav className='breadcrumb'>
         <ul>
           {links}
         </ul>

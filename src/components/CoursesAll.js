@@ -2,7 +2,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import { courses } from '../schema'
 import Courses from './Courses'
-import Breadcrumb from './Breadcrumb';
+import Breadcrumb from './Breadcrumb'
 
 const CoursesAll = (props) => {
   return <Query query={courses} >

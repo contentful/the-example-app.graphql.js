@@ -19,7 +19,7 @@ const CodeHeader = ({id, title, active, onClick}) => {
 }
 
 class LessonCodeSnippet extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.onClick = this.onClick.bind(this)
     this.state = {
@@ -27,51 +27,51 @@ class LessonCodeSnippet extends React.Component {
     }
   }
 
-  onClick(id) {
+  onClick (id) {
     this.setState({
       active: id
     })
   }
 
-  render() {
+  render () {
     const header = []
     const codeArea = []
     for (let prop in this.props) {
       switch (prop) {
         case 'curl':
-          header.push(<CodeHeader id={prop} title='cURL' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='cURL' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='shell' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'dotnet':
-          header.push(<CodeHeader id={prop} title='.NET' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='.NET' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='csharp' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'javascript':
-          header.push(<CodeHeader id={prop} title='JavaScript' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='JavaScript' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='javascript' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'java':
-          header.push(<CodeHeader id={prop} title='Java' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='Java' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='java' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'android':
-          header.push(<CodeHeader id={prop} title='Android' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='Android' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='javaAndroid' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'php':
-          header.push(<CodeHeader id={prop} title='PHP' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='PHP' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='php' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'python':
-          header.push(<CodeHeader id={prop} title='Python' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='Python' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='python' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'ruby':
-          header.push(<CodeHeader id={prop} title='Ruby' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='Ruby' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='ruby' code={this.props[prop]} active={this.state.active === prop} />)
           break
         case 'swift':
-          header.push(<CodeHeader id={prop} title='Swift' active={this.state.active === prop} onClick={this.onClick}/>)
+          header.push(<CodeHeader id={prop} title='Swift' active={this.state.active === prop} onClick={this.onClick} />)
           codeArea.push(<Snippet key={prop} id={prop} class='swift' code={this.props[prop]} active={this.state.active === prop} />)
           break
         default:
@@ -79,8 +79,8 @@ class LessonCodeSnippet extends React.Component {
       }
     }
     return (
-      <div className="lesson-module lesson-module-code">
-        <div className="lesson-module-code__header">
+      <div className='lesson-module lesson-module-code'>
+        <div className='lesson-module-code__header'>
           {header}
         </div>
         <div className='lesson-module-code__code-area'>

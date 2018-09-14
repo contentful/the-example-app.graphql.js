@@ -3,15 +3,15 @@ import Header from './Header'
 import Footer from './Footer'
 
 class Layout extends React.Component {
-  render() {
+  render () {
     return (
-    <React.Fragment>
-      <Header />
-      <div className="main__content">
-        {this.props.children}
-      </div>
-      <Footer />
-    </React.Fragment>
+      <React.Fragment>
+        <Header />
+        <div className='main__content'>
+          {this.props.children}
+        </div>
+        <Footer />
+      </React.Fragment>
     )
   }
 }

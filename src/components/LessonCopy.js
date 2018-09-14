@@ -8,7 +8,6 @@ const LessonCopy = (props) => {
       <div className='lesson-module-copy__copy' dangerouslySetInnerHTML={markdown(props.copy)} />
     </div>
   )
-
 }
 
 export default LessonCopy
