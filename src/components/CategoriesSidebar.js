@@ -4,13 +4,15 @@ import { categories } from '../schema'
 import SidebarMenu from './SidebarMenu'
 // import { Link } from '@reach/router'
 import NavLink from './NavLink'
+import Loading from './Loading'
+import Error from './Error'
 
 const CategoriesSidebar = (props) => {
   return <Query query={categories}>
     {
       ({ loading, error, data }) => {
-        if (loading) return <p>Loading...</p>
-        if (error || data.categoryCollection.items.length < 1) return <p>Error :(</p>
+        if (loading) return <Loading />
+        if (error || data.categoryCollection.items.length < 1) return <Error />
         const categoryCollection = data.categoryCollection.items
         const menuItems = [
           <li key='All courses' className='sidebar-menu__item'>

@@ -2,13 +2,15 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import { courses } from '../schema'
 import Courses from './Courses'
+import Loading from './Loading'
+import Error from './Error'
 
 const CoursesAll = (props) => {
   return <Query query={courses} >
     {
       ({loading, error, data}) => {
-        if (loading) return <p>Loading...</p>
-        if (error) return <p>Error :(</p>
+        if (loading) return <Loading />
+        if (error || courseCollectipn.items.length < 1) return <Error />
         const {courseCollection} = data
         return (
           <React.Fragment>

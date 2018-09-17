@@ -6,6 +6,7 @@ import LessonCodeSnippet from './components/LessonCodeSnippet'
 import LessonImage from './components/LessonImage'
 import LessonCopy from './components/LessonCopy'
 import React from 'react'
+import Error from './components/Error'
 
 // Parse markdown text
 const markdown = (content = '') => {
@@ -34,9 +35,7 @@ function componentTypeMap(type, props) {
     LessonImage: <LessonImage {...props} />,
     LessonCopy: <LessonCopy {...props} />
   }
-  console.log('component type map type:', type)
-  console.log((components[type]) ? components[type] : null)
-  return (components[type]) ? components[type] : null //TODO add error comopnent here!
+  return (components[type]) ? components[type] : <Error />
 }
 
 export {
