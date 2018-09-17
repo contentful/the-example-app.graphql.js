@@ -38,7 +38,12 @@ function componentTypeMap(type, props) {
   return (components[type]) ? components[type] : <Error />
 }
 
+function capitalize(str) {
+  return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.substr(1)).join(' ')
+}
+
 export {
   markdown,
-  componentTypeMap
+  componentTypeMap,
+  capitalize
 }

@@ -1,37 +1,27 @@
 import React from 'react'
 import { Link } from '@reach/router'
+import { capitalize } from '../helpers'
 
-const Breadcrumb = (props) => {
-  // const pathTitles = {
-  //   'courses': 'Courses',
-  //   'categories': 'Categories',
-  //   'lessons': 'Lessons'
-  // }
-  // const pathRoutes = {
-  //   'courses': '/courses',
-  //   'categories': '/courses/categories',
-  //   'lessons': '/courses/:course/lessons'
-  // }
-  console.log('breadcrumb')
-  console.log(props)
-  const links = [<li key='home'><Link to='/'>Home</Link></li>]
-  // const crumbs = props.path.split('/')
-  // crumbs.forEach((crumb, i) => {
-  //   console.log(crumb)
-  //   if (crumb === '') {
-  //     return
-  //   }
-  //   if (i === crumbs.length - 1) {
-  //     links.push(<li key={props.path}><Link to={props.path}>{props.title}</Link></li>)
-  //   } else if (pathRoutes[crumb] && pathTitles[crumb]) {
-  //     links.push(<li key={pathRoutes[crumb]}><Link to={pathRoutes[crumb]}>{pathTitles[crumb]}</Link></li>)
-  //   }
-  // })
+const Breadcrumb = ({location}) => {
+  let crumbs = [<li key='home'><Link to='/'>Home</Link></li>]
+  const { pathname } = location
+  const urlComponents = pathname.split('/').filter(Boolean)
+  // Map components of the path to breadcrumbs with resolvable URLs
+  let mappedComponents = urlComponents.map((component, i, array) => {
+    const path = array.slice(0, i + 1).join('/')
+
+    let label = capitalize(component.replace(/-/g, ' '))
+
+    return (<li key={label}><Link to={path}>{label}</Link></li>)
+  })
+
+  crumbs = crumbs.concat(mappedComponents)
+
   return (
     <div className='layout-no-sidebar'>
       <nav className='breadcrumb'>
         <ul>
-          {links}
+          {crumbs}
         </ul>
       </nav>
     </div>

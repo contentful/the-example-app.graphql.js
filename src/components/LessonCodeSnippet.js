@@ -1,4 +1,5 @@
 import React from 'react'
+import { capitalize } from '../helpers'
 
 const Snippet = (props) => {
   return (
@@ -22,7 +23,6 @@ class LessonCodeSnippet extends React.Component {
   constructor(props) {
     super(props)
     this.onClick = this.onClick.bind(this)
-    this.capitalize = this.capitalize.bind(this)
     this.getType = this.getType.bind(this)
     this.getTItle = this.getTitle.bind(this)
     this.state = {
@@ -34,10 +34,6 @@ class LessonCodeSnippet extends React.Component {
     this.setState({
       active: id
     })
-  }
-
-  capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.substr(1)
   }
 
   getType(platform) {
@@ -56,7 +52,7 @@ class LessonCodeSnippet extends React.Component {
       javascript: 'JavaScript',
       php: 'PHP'
     }
-    return (titles[platform]) ? titles[platform] : this.capitalize(platform)
+    return (titles[platform]) ? titles[platform] : capitalize(platform)
   }
 
   render() {
