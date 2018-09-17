@@ -10,7 +10,7 @@ const CoursesAll = (props) => {
     {
       ({loading, error, data}) => {
         if (loading) return <Loading />
-        if (error || courseCollectipn.items.length < 1) return <Error />
+        if (error || data.courseCollection.items.length < 1) return <Error />
         const {courseCollection} = data
         return (
           <React.Fragment>
