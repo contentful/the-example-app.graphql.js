@@ -18,9 +18,7 @@ import { ApolloLink } from 'apollo-link'
 import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
 import introspectionQueryResultData from './fragmentTypes.json'
 
-const SPACE_ID = 'qz0n5cdakyl9'
-const ACCESS_TOKEN = '580d5944194846b690dd89b630a1cb98a0eef6a19b860ef71efc37ee8076ddb8'
-const localeCode = 'en-US'
+const { REACT_APP_SPACE_ID: SPACE_ID, REACT_APP_ACCESS_TOKEN: ACCESS_TOKEN, REACT_APP_LOCALE_CODE: LOCALE_CODE} = process.env
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData
 })
@@ -37,7 +35,7 @@ const client = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
     new HttpLink({
-      uri: `https://cdn.contentful.com/spaces/${SPACE_ID}/graphql/alpha?locale=${localeCode}`,
+      uri: `https://cdn.contentful.com/spaces/${SPACE_ID}/graphql/alpha?locale=${LOCALE_CODE}`,
       credentials: 'same-origin',
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`
