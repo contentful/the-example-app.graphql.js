@@ -4,7 +4,6 @@ import './public/stylesheets/style.css'
 import Home from './components/Home'
 import Layout from './components/Layout'
 import CourseOverview from './components/CourseOverview'
-import CourseLesson from './components/CourseLesson'
 import CoursesAll from './components/CoursesAll'
 import CoursesCategory from './components/CoursesCategory'
 
@@ -58,7 +57,7 @@ ReactDOM.render((
         <CoursesCategory path='/courses/categories/:category-slug' />
         <CourseOverview path='/courses/:course-slug' />
         <CourseOverview path='/courses/:course-slug/lessons' />
-        <CourseLesson path='/courses/:course-slug/lessons/:lesson-slug' />
+        <CourseOverview path='courses/:course-slug/lessons/:lesson-slug' />
       </Router>
     </Layout>
   </ApolloProvider>

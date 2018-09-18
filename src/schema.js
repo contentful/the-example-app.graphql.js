@@ -1,34 +1,5 @@
 import gql from 'graphql-tag'
 
-const courseFragment = gql`fragment CourseFragment on Course {
-  slug
-  title
-  shortDescription
-  description
-  duration
-  skillLevel
-  lessonsCollection {
-    items {
-      ...LessonFragment
-    }
-  }
-}
-`
-const lessonFragment = gql`fragment LessonFragment on Lesson {
-    title
-    slug
-}`
-
-const courseBySlug = gql`query CourseBySlug($slug: String!) {
-  courseCollection(where: {slug: $slug}) {
-    items {
-      ...CourseFragment
-    }
-  }
-}
-${courseFragment}
-${lessonFragment}`
-
 const LessonCodeSnippetFragment = gql`fragment LessonCodeSnippetFragment on LessonCodeSnippets {
   title
   curl
@@ -56,31 +27,78 @@ const LessonCopyFragment = gql`fragment LessonCopyFragment on LessonCopy {
   copy
 }`
 
-const lessonBySlug = gql`query LessonBySlug($slug: String!) {
-  lessonCollection(where: {slug: $slug}) {
+const lessonFragment = gql`fragment LessonFragment on Lesson {
+  title
+  slug
+  modulesCollection {
     items {
-      title
-      slug
-      modulesCollection {
-        items {
-          ... on LessonCodeSnippets {
-            ...LessonCodeSnippetFragment
-          }
-          ... on LessonImage {
-            ...LessonImageFragment
-          }
-          ... on LessonCopy {
-            ...LessonCopyFragment
-          }
-        }
+      ... on LessonCodeSnippets {
+        ...LessonCodeSnippetFragment
+      }
+      ... on LessonImage {
+        ...LessonImageFragment
+      }
+      ... on LessonCopy {
+        ...LessonCopyFragment
       }
     }
   }
 }
 ${LessonCodeSnippetFragment}
 ${LessonImageFragment}
-${LessonCopyFragment}
+${LessonCopyFragment}`
+
+
+const courseFragment = gql`fragment CourseFragment on Course {
+  slug
+  title
+  shortDescription
+  description
+  duration
+  skillLevel
+  lessonsCollection {
+    items {
+      ...LessonFragment
+    }
+  }
+}
 `
+
+const courseBySlug = gql`query CourseBySlug($slug: String!) {
+  courseCollection(where: {slug: $slug}) {
+    items {
+      ...CourseFragment
+    }
+  }
+}
+${courseFragment}
+${lessonFragment}`
+
+// const lessonBySlug = gql`query LessonBySlug($slug: String!) {
+//   lessonCollection(where: {slug: $slug}) {
+//     items {
+//       title
+//       slug
+//       modulesCollection {
+//         items {
+//           ... on LessonCodeSnippets {
+//             ...LessonCodeSnippetFragment
+//           }
+//           ... on LessonImage {
+//             ...LessonImageFragment
+//           }
+//           ... on LessonCopy {
+//             ...LessonCopyFragment
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// ${LessonCodeSnippetFragment}
+// ${LessonImageFragment}
+// ${LessonCopyFragment}
+// `
 
 const coursePreviewFragment = gql`
 fragment CoursePreviewFragment on Course {
@@ -139,7 +157,7 @@ ${categoryFragment}`
 
 export {
   courseBySlug,
-  lessonBySlug,
+  // lessonBySlug,
   courses,
   coursesOfCategory,
   categories

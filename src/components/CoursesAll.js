@@ -15,6 +15,7 @@ const CoursesAll = (props) => {
         return (
           <React.Fragment>
             <Courses courseCollection={courseCollection} title='All courses' />
+            {props.children}
           </React.Fragment>
         )
       }

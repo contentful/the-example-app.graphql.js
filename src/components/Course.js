@@ -1,13 +1,13 @@
 import React from 'react'
 import SidebarMenu from './SidebarMenu'
 import { Link } from '@reach/router'
+import Lesson from './Lesson'
+import IntroLesson from './IntroLesson'
 
-// needs lesson collection w/ slug + title, course slug
-
-const Course = ({course, children}) => {
+const Course = ({course, lessonSlug}) => {
   const lessons = course.lessonsCollection.items
+  let matchingLessons = null
   // prep sidebar
-  // TO DO add active/visited situation to link
   const sidebarLinks = [
     <div key='course-overview' className='table-of-contents__item'>
       <Link className='table-of-contents__link' to={`/courses/${course.slug}` /* +query??? */}>Course overview</Link>
@@ -21,6 +21,11 @@ const Course = ({course, children}) => {
       </div>
     )
   })
+
+  if (lessonSlug) {
+    matchingLessons = lessons.filter(lesson => lesson.slug === lessonSlug)
+  }
+
   return (
     <div className='layout-sidebar'>
       <SidebarMenu title='Table of Contents'>
@@ -31,7 +36,9 @@ const Course = ({course, children}) => {
         </div>
       </SidebarMenu>
       <section className='layout-sidebar__content'>
-        {children}
+      {
+        (matchingLessons && matchingLessons.length > 0) ? <Lesson lesson={matchingLessons[0]} /> : <IntroLesson course={course} />
+      }
       </section>
     </div>
   )

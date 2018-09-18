@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from '@reach/router'
+import NavLink from './NavLink'
 
 const Footer = () => {
   return (
@@ -11,10 +11,10 @@ const Footer = () => {
             <nav className='footer__navigation main-navigation'>
               <ul>
                 <li>
-                  <Link to='/' className='active'>Home</Link>
+                  <NavLink to='/'>Home</NavLink>
                 </li>
                 <li>
-                  <Link to='/courses'>Courses</Link>
+                  <NavLink to='/courses'>Courses</NavLink>
                 </li>
               </ul>
             </nav>
