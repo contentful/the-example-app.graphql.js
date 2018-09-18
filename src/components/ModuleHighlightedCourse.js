@@ -21,9 +21,10 @@ const Categories = (props) => {
 
 const ModuleHighlightedCourse = (props) => {
   const { course } = props
+  console.log(course)
   return (
     <div className='module module-highlighted-course'>
-      <div className='module-highlighted-course__wrapper' style={course && {backgroundImage: course.image.url}}>
+      <div className='module-highlighted-course__wrapper' style={{backgroundImage: `url(${course.image.url})`}}>
         <div className='module-highlighted-course__overlay' />
         {(!course)
           ? error
