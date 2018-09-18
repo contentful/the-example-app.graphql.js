@@ -1,7 +1,6 @@
 import React from 'react'
 
 const LessonImage = (props) => {
-  console.log(props)
   const error = <h3><span role='img' aria-label='danger'>⚠️</span> Image missing</h3>
 
   return (

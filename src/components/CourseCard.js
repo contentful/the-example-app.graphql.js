@@ -7,7 +7,7 @@ const CourseCard = (props) => {
   categoriesCollection.items.forEach(({slug: catSlug, title: catTitle}) => {
     categoryLinks.push(
       <div key={catSlug} className='course-card__category'>
-        <Link className='course-card__category-link' to={`/courses/categories/${catSlug}` /* + QUERY STRING WHAT IS THAT */}>{catTitle}</Link>
+        <Link className='course-card__category-link' to={`/courses/categories/${catSlug}`}>{catTitle}</Link>
       </div>
     )
   })
@@ -16,9 +16,9 @@ const CourseCard = (props) => {
       <div className='course-card__categories'>
         {categoryLinks}
       </div>
-      <h2 className='course-card__title'><Link to={`/courses/${slug}` /* + query string? */}>{title}</Link></h2>
+      <h2 className='course-card__title'><Link to={`/courses/${slug}`}>{title}</Link></h2>
       <p className='course-card__description'>{shortDescription}</p>
-      <div className='course-card__link-wrapper'><Link className='course-card__link' to={`/courses/${slug}` /* + query string??> */}>View Courses</Link></div>
+      <div className='course-card__link-wrapper'><Link className='course-card__link' to={`/courses/${slug}`}>View Course</Link></div>
     </div>
   )
 }

@@ -4,9 +4,10 @@ import { Link } from '@reach/router'
 import Lesson from './Lesson'
 import IntroLesson from './IntroLesson'
 
-const Course = ({course, lessonSlug}) => {
+const Course = ({ course, lessonSlug }) => {
   const lessons = course.lessonsCollection.items
-  let matchingLessons = null
+  let matchingLesson = null
+  let nextLesson = null
   // prep sidebar
   const sidebarLinks = [
     <div key='course-overview' className='table-of-contents__item'>
@@ -23,7 +24,17 @@ const Course = ({course, lessonSlug}) => {
   })
 
   if (lessonSlug) {
-    matchingLessons = lessons.filter(lesson => lesson.slug === lessonSlug)
+    for (let i = 0; i < lessons.length; i++) {
+      let lesson = lessons[i]
+      if (lesson.slug === lessonSlug) {
+        matchingLesson = lesson
+        console.log(i)
+        if (i + 1 < lessons.length) {
+          nextLesson = lessons[i + 1]
+        }
+        break
+      }
+    }
   }
 
   return (
@@ -36,9 +47,9 @@ const Course = ({course, lessonSlug}) => {
         </div>
       </SidebarMenu>
       <section className='layout-sidebar__content'>
-      {
-        (matchingLessons && matchingLessons.length > 0) ? <Lesson lesson={matchingLessons[0]} /> : <IntroLesson course={course} />
-      }
+        {
+          (matchingLesson) ? <Lesson lesson={matchingLesson} nextLesson={nextLesson} courseSlug={course.slug} /> : <IntroLesson course={course} />
+        }
       </section>
     </div>
   )

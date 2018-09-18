@@ -4,13 +4,12 @@ import { markdown } from '../helpers'
 const errorHighlightedCourse = '⚠️ The course is not published or does not exist.'
 const error = <div class='module-highlighted-course__content'><h2 class='module-highlighted-course__title'>{errorHighlightedCourse}</h2></div>
 const viewCourseLabel = 'View Course'
-const queryString = 'what is the query string?!?!?!'
 
 const Categories = (props) => {
   const categoryItems = []
   if (props.categories) {
     props.categories.forEach((category) => {
-      categoryItems.push(<a key={category.slug} class='module-highlighted-course__category' href={`/courses/categories/${category.slug}${queryString}`}>{category.title}</a>)
+      categoryItems.push(<a key={category.slug} class='module-highlighted-course__category' href={`/courses/categories/${category.slug}`}>{category.title}</a>)
     })
     return (
       <div class='module-highlighted-course__categories'>
@@ -41,7 +40,7 @@ const ModuleHighlightedCourse = (props) => {
               <p />
             </div>
             <div className='module-highlighted-course__link-wrapper'>
-              <a className='module-highlighted-course__link' href={`/courses/${course.slug}${queryString}`}>{viewCourseLabel}</a>
+              <a className='module-highlighted-course__link' href={`/courses/${course.slug}`}>{viewCourseLabel}</a>
             </div>
           </div>
         }
