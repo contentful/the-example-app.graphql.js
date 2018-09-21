@@ -11,7 +11,9 @@ const CourseOverview = (props) => {
     {
       ({ loading, error, data }) => {
         if (loading) return <Loading />
-        if (error || data.courseCollection.items.length < 1) return <Error />
+        if (error || data.courseCollection.items.length < 1) {
+          return <Error />
+        }
         const course = data.courseCollection.items[0]
         return (
           <Course course={course} lessonSlug={lessonSlug} />

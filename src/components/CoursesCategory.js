@@ -16,9 +16,7 @@ const CoursesCategory = (props) => {
         const category = data.categoryCollection.items[0]
         const courseCollection = category.linkedFrom.entryCollection
         return (
-          <React.Fragment>
-            <Courses courseCollection={courseCollection} title={category.title} />
-          </React.Fragment>
+          <Courses courseCollection={courseCollection} title={category.title} />
         )
       }
     }

@@ -10,7 +10,7 @@ class Layout extends React.Component {
       <React.Fragment>
         <Header />
         <div className='main__content'>
-          <Location>{({location}) => (location.pathname === '/') ? null : <Breadcrumb location={location} />}</Location>
+          <Location>{({location}) => (location.pathname !== '/') && <Breadcrumb location={location} />}</Location>
           {this.props.children}
         </div>
         <Footer />
