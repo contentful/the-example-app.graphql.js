@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LessonImage = ({image, caption}) => {
+const LessonImage = ({ image, caption }) => {
   const error = <h3><span role='img' aria-label='danger'>⚠️</span> Image missing</h3>
 
   return (

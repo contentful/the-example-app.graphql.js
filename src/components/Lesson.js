@@ -14,7 +14,6 @@ const Lesson = ({ lesson, nextLesson, courseSlug }) => {
       { nextLesson && <Link className='lesson__cta cta' to={`/courses/${courseSlug}/lessons/${nextLesson.slug}`}>Go to the next lesson</Link>}
     </div>
   )
-
 }
 
 export default Lesson

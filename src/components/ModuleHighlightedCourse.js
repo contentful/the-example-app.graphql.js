@@ -5,7 +5,7 @@ const errorHighlightedCourse = '⚠️ The course is not published or does not e
 const error = <div class='module-highlighted-course__content'><h2 class='module-highlighted-course__title'>{errorHighlightedCourse}</h2></div>
 const viewCourseLabel = 'View Course'
 
-const Categories = ({categories}) => {
+const Categories = ({ categories }) => {
   const categoryItems = []
   if (categories) {
     categories.forEach((category) => {
@@ -19,17 +19,17 @@ const Categories = ({categories}) => {
   } else return null
 }
 
-const ModuleHighlightedCourse = ({course}) => {
+const ModuleHighlightedCourse = ({ course }) => {
   return (
     <div className='module module-highlighted-course'>
-      <div className='module-highlighted-course__wrapper' style={{backgroundImage: `url(${course.image.url})`}}>
+      <div className='module-highlighted-course__wrapper' style={{ backgroundImage: `url(${course.image.url})` }}>
         <div className='module-highlighted-course__overlay' />
         {(!course)
           ? error
           : <div className='module-highlighted-course__content'>
             <Categories categories={course.categories} />
-            <h2 className='module-highlighted-course__title' style={{whiteSpace: 'nowrap'}}>
-              <span className='textFitted' style={{display: 'inline-block', fontSize: '52px'}}>
+            <h2 className='module-highlighted-course__title' style={{ whiteSpace: 'nowrap' }}>
+              <span className='textFitted' style={{ display: 'inline-block', fontSize: '52px' }}>
                 <a href={`/courses/${course.slug}`}>{course.title}</a>
               </span>
             </h2>

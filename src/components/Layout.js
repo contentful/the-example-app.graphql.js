@@ -4,7 +4,7 @@ import Footer from './Footer'
 import { Location } from '@reach/router'
 import Breadcrumb from './Breadcrumb'
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <React.Fragment>
       <Header />

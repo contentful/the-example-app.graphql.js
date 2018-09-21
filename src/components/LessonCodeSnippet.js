@@ -21,7 +21,7 @@ const CodeHeader = ({ id, title, active, onClick }) => {
 }
 
 class LessonCodeSnippet extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.onClick = this.onClick.bind(this)
     this.getType = this.getType.bind(this)
@@ -31,13 +31,13 @@ class LessonCodeSnippet extends React.Component {
     }
   }
 
-  onClick(id) {
+  onClick (id) {
     this.setState({
       active: id
     })
   }
 
-  getType(platform) {
+  getType (platform) {
     const types = {
       curl: 'shell',
       dotNet: 'csharp',
@@ -46,7 +46,7 @@ class LessonCodeSnippet extends React.Component {
     return (types[platform]) ? types[platform] : platform
   }
 
-  getTitle(platform) {
+  getTitle (platform) {
     const titles = {
       curl: 'cURL',
       dotNet: '.NET',
@@ -56,7 +56,7 @@ class LessonCodeSnippet extends React.Component {
     return (titles[platform]) ? titles[platform] : capitalize(platform)
   }
 
-  render() {
+  render () {
     const headers = []
     const snippets = []
     for (let prop in this.props) {

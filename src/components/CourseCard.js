@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from '@reach/router'
 
-const CourseCard = ({course}) => {
-  const {categoriesCollection, title, shortDescription, slug} = course
+const CourseCard = ({ course }) => {
+  const { categoriesCollection, title, shortDescription, slug } = course
   const categoryLinks = []
-  categoriesCollection.items.forEach(({slug: catSlug, title: catTitle}) => {
+  categoriesCollection.items.forEach(({ slug: catSlug, title: catTitle }) => {
     categoryLinks.push(
       <div key={catSlug} className='course-card__category'>
         <Link className='course-card__category-link' to={`/courses/categories/${catSlug}`}>{catTitle}</Link>

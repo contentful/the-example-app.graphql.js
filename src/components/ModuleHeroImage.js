@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ModuleHeroImage = ({headline, backgroundImage}) => {
+const ModuleHeroImage = ({ headline, backgroundImage }) => {
   return (
     <div className='module-hero-image'>
       <div className='module-hero-image__wrapper'>

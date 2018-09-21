@@ -13,7 +13,7 @@ const markdown = (content = '') => {
   if (!content.trim()) {
     return ''
   }
-  return { __html: marked(removeInvalidDataURL(content), {sanitize: true})}
+  return { __html: marked(removeInvalidDataURL(content), { sanitize: true }) }
 }
 
 /**
@@ -25,8 +25,7 @@ function removeInvalidDataURL (content) {
   return content.replace(regex, '#')
 }
 
-function componentTypeMap(type, props) {
-
+function componentTypeMap (type, props) {
   const components = {
     LayoutHighlightedCourse: <ModuleHighlightedCourse {...props} />,
     LayoutCopy: <ModuleCopy {...props} />,
@@ -38,7 +37,7 @@ function componentTypeMap(type, props) {
   return (components[type]) ? components[type] : <Error />
 }
 
-function capitalize(str) {
+function capitalize (str) {
   return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.substr(1)).join(' ')
 }
 

@@ -7,7 +7,7 @@ import IntroLesson from './IntroLesson'
 const Course = ({ course, lessonSlug }) => {
   const lessons = course.lessonsCollection.items
   let nextLesson = null
-  // prep sidebar
+  // Prep sidebar
   const overview =
     <div key='course-overview' className='table-of-contents__item'>
       <NavLink className='table-of-contents__link' to={`/courses/${course.slug}`}>Course overview</NavLink>

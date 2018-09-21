@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import { markdown } from '../helpers'
-const IntroLesson = ({course}) => {
+const IntroLesson = ({ course }) => {
   return (
     <div className='course'>
       <h1 className='course__title'>{course.title}</h1>
