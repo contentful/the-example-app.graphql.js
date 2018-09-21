@@ -8,7 +8,9 @@ const NavLink = props => (
       const className = (props.className) ? props.className : ''
       const isAllCoursesSidebarLink = className === 'sidebar-menu__link' && href === '/courses'
       const isHomeRoute = href === '/'
-      const current = (isHomeRoute || isAllCoursesSidebarLink) ? isCurrent : isPartiallyCurrent //home route and all courses sidebar route must match exactly
+      const isCourseOverview = props.children === 'Course overview'
+      //home route, all courses sidebar route, course overview sidebar route must match exactly
+      const current = (isHomeRoute || isAllCoursesSidebarLink || isCourseOverview) ? isCurrent : isPartiallyCurrent 
       return {
         className: className + (current ? ' active' : '')
       }

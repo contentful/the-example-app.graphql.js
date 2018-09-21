@@ -1,6 +1,6 @@
 import React from 'react'
 import SidebarMenu from './SidebarMenu'
-import { Link } from '@reach/router'
+import NavLink from './NavLink'
 import Lesson from './Lesson'
 import IntroLesson from './IntroLesson'
 
@@ -10,12 +10,12 @@ const Course = ({ course, lessonSlug }) => {
   // prep sidebar
   const overview =
     <div key='course-overview' className='table-of-contents__item'>
-      <Link className='table-of-contents__link' to={`/courses/${course.slug}`}>Course overview</Link>
+      <NavLink className='table-of-contents__link' to={`/courses/${course.slug}`}>Course overview</NavLink>
     </div>
 
   const sidebarLinks = lessons.map(lesson =>
     <div key={lesson.slug} className='table-of-contents__item'>
-      <Link className='table-of-contents__link' to={`/courses/${course.slug}/lessons/${lesson.slug}`}>{lesson.title}</Link>
+      <NavLink className='table-of-contents__link' to={`/courses/${course.slug}/lessons/${lesson.slug}`}>{lesson.title}</NavLink>
     </div>)
   sidebarLinks.unshift(overview)
 
