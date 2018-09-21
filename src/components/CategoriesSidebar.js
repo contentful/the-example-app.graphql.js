@@ -6,7 +6,7 @@ import NavLink from './NavLink'
 import Loading from './Loading'
 import Error from './Error'
 
-const CategoriesSidebar = (props) => {
+const CategoriesSidebar = () => {
   return <Query query={categories}>
     {
       ({ loading, error, data }) => {

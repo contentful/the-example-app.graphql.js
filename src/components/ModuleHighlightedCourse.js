@@ -5,10 +5,10 @@ const errorHighlightedCourse = '⚠️ The course is not published or does not e
 const error = <div class='module-highlighted-course__content'><h2 class='module-highlighted-course__title'>{errorHighlightedCourse}</h2></div>
 const viewCourseLabel = 'View Course'
 
-const Categories = (props) => {
+const Categories = ({categories}) => {
   const categoryItems = []
-  if (props.categories) {
-    props.categories.forEach((category) => {
+  if (categories) {
+    categories.forEach((category) => {
       categoryItems.push(<a key={category.slug} class='module-highlighted-course__category' href={`/courses/categories/${category.slug}`}>{category.title}</a>)
     })
     return (
@@ -19,9 +19,7 @@ const Categories = (props) => {
   } else return null
 }
 
-const ModuleHighlightedCourse = (props) => {
-  const { course } = props
-  console.log(course)
+const ModuleHighlightedCourse = ({course}) => {
   return (
     <div className='module module-highlighted-course'>
       <div className='module-highlighted-course__wrapper' style={{backgroundImage: `url(${course.image.url})`}}>

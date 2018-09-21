@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from '@reach/router'
 
-const CourseCard = (props) => {
-  const {categoriesCollection, title, shortDescription, slug} = props.course
+const CourseCard = ({course}) => {
+  const {categoriesCollection, title, shortDescription, slug} = course
   const categoryLinks = []
   categoriesCollection.items.forEach(({slug: catSlug, title: catTitle}) => {
     categoryLinks.push(

@@ -1,5 +1,6 @@
 import React from 'react'
 import { capitalize } from '../helpers'
+import PropTypes from 'prop-types'
 
 const Snippet = (props) => {
   return (
@@ -78,3 +79,17 @@ class LessonCodeSnippet extends React.Component {
 }
 
 export default LessonCodeSnippet
+
+LessonCodeSnippet.propTypes = {
+  __typename: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  curl: PropTypes.string,
+  dotNet: PropTypes.string,
+  javascript: PropTypes.string,
+  java: PropTypes.string,
+  javaAndroid: PropTypes.string,
+  php: PropTypes.string,
+  python: PropTypes.string,
+  ruby: PropTypes.string,
+  swift: PropTypes.string
+}

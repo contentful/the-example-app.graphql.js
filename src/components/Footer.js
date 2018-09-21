@@ -3,7 +3,6 @@ import NavLink from './NavLink'
 
 const Footer = () => {
   return (
-
     <div className='main__footer'>
       <div className='layout-centered'>
         <footer className='footer'>

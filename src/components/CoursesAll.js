@@ -5,7 +5,7 @@ import Courses from './Courses'
 import Loading from './Loading'
 import Error from './Error'
 
-const CoursesAll = (props) => {
+const CoursesAll = ({children}) => {
   return <Query query={courses} >
     {
       ({loading, error, data}) => {
@@ -15,7 +15,7 @@ const CoursesAll = (props) => {
         return (
           <React.Fragment>
             <Courses courseCollection={courseCollection} title='All courses' />
-            {props.children}
+            {children}
           </React.Fragment>
         )
       }

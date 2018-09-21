@@ -6,7 +6,6 @@ import Loading from './Loading'
 import Error from './Error'
 
 const CoursesCategory = (props) => {
-  console.log(props)
   const { 'category-slug': slug } = props
   return <Query query={coursesOfCategory} variables={{ slug }}>
     {
