@@ -51,3 +51,8 @@ npm start
 You can also deploy this app to Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Setup for Introspection Fragment Matcher
+
+Because we create fragments over union types in this project, we need to use an IntrospectionFragmentMatcher. This fragment matcher needs to understand a bit more about our schema in order to
+function properly. We use a script to extract the schema and store it in a JSON file. This file is imported when the fragment matcher is constructed. The schema json is included in the project, but may need to be re-exported if the schema changes. You can do this with `npm run fragmentTypesScript`. More information about this script and fragment matchers can be found in the Apollo Client documentation [here](https://www.apollographql.com/docs/react/advanced/fragments.html).
