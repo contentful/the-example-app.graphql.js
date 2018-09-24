@@ -107,7 +107,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+#.env We actually want to check this in, it's read-only tokens
 
 
 ### SublimeText ###

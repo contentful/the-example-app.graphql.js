@@ -1,39 +1,63 @@
-import ReactDOM from 'react-dom';
-import './index.css';
-import Home from './components/Home'
-import Courses from './components/Courses'
-
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom'
-import ApolloClient from 'apollo-boost'
+import ReactDOM from 'react-dom'
+import './public/stylesheets/style.css'
+import Home from './components/Home'
+import Layout from './components/Layout'
+import CourseOverview from './components/CourseOverview'
+import CoursesAll from './components/CoursesAll'
+import CoursesCategory from './components/CoursesCategory'
+
+import { Router } from '@reach/router'
+
+import ApolloClient from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
+import { HttpLink } from 'apollo-link-http'
+import { onError } from 'apollo-link-error'
+import { ApolloLink } from 'apollo-link'
+import introspectionQueryResultData from './fragmentTypes.json'
 
-const SPACE_ID = '409ccxwy4hgv'
-const ACCESS_TOKEN = '821f63b9888bf6b2d48587d14be057bd51feab28f188b895cb0a87b22fa12f7b'
-const localeCode = "en-US"
-
+const { REACT_APP_SPACE_ID: SPACE_ID, REACT_APP_ACCESS_TOKEN: ACCESS_TOKEN, REACT_APP_LOCALE_CODE: LOCALE_CODE } = process.env
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
+})
 const client = new ApolloClient({
-  uri: `https://cdn.contentful.com/spaces/${SPACE_ID}/graphql/alpha?locale=${localeCode}`,
-  headers: {
-    Authorization: `Bearer ${ACCESS_TOKEN}`
-  }
+  link: ApolloLink.from([
+    onError(({ graphQLErrors, networkError }) => {
+      if (graphQLErrors) {
+        graphQLErrors.map(({ message, locations, path }) =>
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          )
+        )
+      }
+      if (networkError) console.log(`[Network error]: ${networkError}`)
+    }),
+    new HttpLink({
+      uri: `https://cdn.contentful.com/spaces/${SPACE_ID}/graphql/alpha?locale=${LOCALE_CODE}`,
+      credentials: 'same-origin',
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`
+      }
+    })
+  ]),
+  cache: new InMemoryCache({ fragmentMatcher })
 })
 
-
 ReactDOM.render((
-  <Router>
-    <ApolloProvider client={client}>
-        <Route path='/' component={Home} />
-      <Switch>
-        <Route path='/courses' component={Courses} />
-        <Route path='/courses/categories' component={Courses} />
-      </Switch>
-    </ApolloProvider>
-  </Router>
-  ),
-  document.getElementById('root')
+  <ApolloProvider client={client}>
+    <Layout>
+      <Router >
+        <Home path='/' />
+        <CoursesAll path='/courses' />
+        <CoursesAll path='/courses/categories' />
+        <CoursesCategory path='/courses/categories/:category-slug' />
+        <CourseOverview path='/courses/:course-slug' />
+        <CourseOverview path='/courses/:course-slug/lessons' />
+        <CourseOverview path='courses/:course-slug/lessons/:lesson-slug' />
+      </Router>
+    </Layout>
+  </ApolloProvider>
+),
+document.getElementById('root')
 )

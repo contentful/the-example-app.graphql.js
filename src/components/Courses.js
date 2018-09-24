@@ -1,36 +1,28 @@
 import React from 'react'
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import CourseCard from './CourseCard'
+import CategoriesSidebar from './CategoriesSidebar'
 
-const Courses = () => {
-  return <Query
-    query={gql`
-    {
-      courseCollection {
-        items {
-          title
-          slug
-          shortDescription
-          description
-          duration
-          skillLevel
-        }
-      }
-    }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
-      return data.courseCollection.items.map(({ title, slug, shortDescription }) => (
-        <div>
-          <p>{title}</p>
-          <p>{slug}</p>
-           <p>{shortDescription}</p>
+const Courses = ({ courseCollection, title }) => {
+  const courses = courseCollection.items
+  return (
+    <div className='layout-sidebar'>
+      <CategoriesSidebar />
+      <section className='layout-sidebar__content'>
+        <div className='courses'>
+          <h1>{`${title} (${courses.length})`}</h1>
+          <div className='grid-list'>
+            {courses.length &&
+              courses.map(course => {
+                return (
+                  <div key={course.slug} className='grid-list__item'><CourseCard course={course} /></div>
+                )
+              })
+            }
+          </div>
         </div>
-      ))
-    }}
-  </Query>
+      </section>
+    </div>
+  )
 }
 
 export default Courses
