@@ -1,7 +1,6 @@
 import React from 'react'
 import { markdown } from '../helpers'
 
-// TODO check this is correct somehow
 const ModuleCopy = (props) => {
   const { visualStyle, headline, copy, ctaLink, ctaTitle } = props
   const style = visualStyle === 'Emphasized' ? '--emphasized' : ''

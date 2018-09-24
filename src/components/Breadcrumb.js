@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 import { capitalize } from '../helpers'
 
-const Breadcrumb = ({location}) => {
+const Breadcrumb = ({ location }) => {
   let crumbs = [<li key='home'><Link to='/'>Home</Link></li>]
   const { pathname } = location
   const urlComponents = pathname.split('/').filter(Boolean)

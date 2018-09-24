@@ -2,12 +2,11 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import { categories } from '../schema'
 import SidebarMenu from './SidebarMenu'
-// import { Link } from '@reach/router'
 import NavLink from './NavLink'
 import Loading from './Loading'
 import Error from './Error'
 
-const CategoriesSidebar = (props) => {
+const CategoriesSidebar = () => {
   return <Query query={categories}>
     {
       ({ loading, error, data }) => {

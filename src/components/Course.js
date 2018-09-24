@@ -1,40 +1,28 @@
 import React from 'react'
 import SidebarMenu from './SidebarMenu'
-import { Link } from '@reach/router'
+import NavLink from './NavLink'
 import Lesson from './Lesson'
 import IntroLesson from './IntroLesson'
 
 const Course = ({ course, lessonSlug }) => {
   const lessons = course.lessonsCollection.items
-  let matchingLesson = null
   let nextLesson = null
-  // prep sidebar
-  const sidebarLinks = [
+  // Prep sidebar
+  const overview =
     <div key='course-overview' className='table-of-contents__item'>
-      <Link className='table-of-contents__link' to={`/courses/${course.slug}` /* +query??? */}>Course overview</Link>
+      <NavLink className='table-of-contents__link' to={`/courses/${course.slug}`}>Course overview</NavLink>
     </div>
-  ]
 
-  lessons.forEach(lesson => {
-    sidebarLinks.push(
-      <div key={lesson.slug} className='table-of-contents__item'>
-        <Link className='table-of-contents__link' to={`/courses/${course.slug}/lessons/${lesson.slug}` /* +query??? */}>{lesson.title}</Link>
-      </div>
-    )
-  })
+  const sidebarLinks = lessons.map(lesson =>
+    <div key={lesson.slug} className='table-of-contents__item'>
+      <NavLink className='table-of-contents__link' to={`/courses/${course.slug}/lessons/${lesson.slug}`}>{lesson.title}</NavLink>
+    </div>)
+  sidebarLinks.unshift(overview)
 
-  if (lessonSlug) {
-    for (let i = 0; i < lessons.length; i++) {
-      let lesson = lessons[i]
-      if (lesson.slug === lessonSlug) {
-        matchingLesson = lesson
-        console.log(i)
-        if (i + 1 < lessons.length) {
-          nextLesson = lessons[i + 1]
-        }
-        break
-      }
-    }
+  const matched = lessons.find((lesson) => lesson.slug === lessonSlug)
+  const matchedLessonIndex = lessons.indexOf(matched)
+  if (matchedLessonIndex + 1 < lessons.length) {
+    nextLesson = lessons[matchedLessonIndex + 1]
   }
 
   return (
@@ -48,7 +36,7 @@ const Course = ({ course, lessonSlug }) => {
       </SidebarMenu>
       <section className='layout-sidebar__content'>
         {
-          (matchingLesson) ? <Lesson lesson={matchingLesson} nextLesson={nextLesson} courseSlug={course.slug} /> : <IntroLesson course={course} />
+          (matchedLessonIndex > -1) ? <Lesson lesson={matched} nextLesson={nextLesson} courseSlug={course.slug} /> : <IntroLesson course={course} />
         }
       </section>
     </div>

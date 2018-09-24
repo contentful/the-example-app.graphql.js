@@ -1,5 +1,6 @@
 import React from 'react'
 import { capitalize } from '../helpers'
+import PropTypes from 'prop-types'
 
 const Snippet = (props) => {
   return (
@@ -20,7 +21,7 @@ const CodeHeader = ({ id, title, active, onClick }) => {
 }
 
 class LessonCodeSnippet extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.onClick = this.onClick.bind(this)
     this.getType = this.getType.bind(this)
@@ -30,13 +31,13 @@ class LessonCodeSnippet extends React.Component {
     }
   }
 
-  onClick(id) {
+  onClick (id) {
     this.setState({
       active: id
     })
   }
 
-  getType(platform) {
+  getType (platform) {
     const types = {
       curl: 'shell',
       dotNet: 'csharp',
@@ -45,7 +46,7 @@ class LessonCodeSnippet extends React.Component {
     return (types[platform]) ? types[platform] : platform
   }
 
-  getTitle(platform) {
+  getTitle (platform) {
     const titles = {
       curl: 'cURL',
       dotNet: '.NET',
@@ -55,7 +56,7 @@ class LessonCodeSnippet extends React.Component {
     return (titles[platform]) ? titles[platform] : capitalize(platform)
   }
 
-  render() {
+  render () {
     const headers = []
     const snippets = []
     for (let prop in this.props) {
@@ -78,3 +79,17 @@ class LessonCodeSnippet extends React.Component {
 }
 
 export default LessonCodeSnippet
+
+LessonCodeSnippet.propTypes = {
+  __typename: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  curl: PropTypes.string,
+  dotNet: PropTypes.string,
+  javascript: PropTypes.string,
+  java: PropTypes.string,
+  javaAndroid: PropTypes.string,
+  php: PropTypes.string,
+  python: PropTypes.string,
+  ruby: PropTypes.string,
+  swift: PropTypes.string
+}

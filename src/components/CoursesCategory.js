@@ -6,7 +6,6 @@ import Loading from './Loading'
 import Error from './Error'
 
 const CoursesCategory = (props) => {
-  console.log(props)
   const { 'category-slug': slug } = props
   return <Query query={coursesOfCategory} variables={{ slug }}>
     {
@@ -16,9 +15,7 @@ const CoursesCategory = (props) => {
         const category = data.categoryCollection.items[0]
         const courseCollection = category.linkedFrom.entryCollection
         return (
-          <React.Fragment>
-            <Courses courseCollection={courseCollection} title={category.title} />
-          </React.Fragment>
+          <Courses courseCollection={courseCollection} title={category.title} />
         )
       }
     }
