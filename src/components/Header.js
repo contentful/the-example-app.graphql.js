@@ -17,7 +17,7 @@ const Header = () => {
               </Link>
             </div>
             <div className='header__upper-copy'>
-              <a className='header__upper-link' href='https://github.com/contentful/the-example-app.nodejs' target='_blank' rel='noopener noreferrer'>
+              <a className='header__upper-link' href='https://github.com/contentful/the-example-app.graphql.js' target='_blank' rel='noopener noreferrer'>
                 <svg className='header__upper-icon'>
                   <use xlinkHref='icons/icons.svg#github' />
                 </svg>View on GitHub

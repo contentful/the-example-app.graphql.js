@@ -28,7 +28,7 @@ const Footer = () => {
             <div className='footer__disclaimer'>
               <p className='footer__disclaimer-text'>
                 Powered by Contentful. This website and the materials found on it are for demo purposes. You can use this to preview the content created on your Contentful account.&nbsp;
-                <a href='https://github.com/contentful/the-example-app.nodejs' target='_blank' rel='noopener noreferrer'>View on GitHub</a>.&nbsp;
+                <a href='https://github.com/contentful/the-example-app.graphql.js' target='_blank' rel='noopener noreferrer'>View on GitHub</a>.&nbsp;
                 <a href='/imprint'>Imprint</a>.&nbsp;
                 <a href='https://www.contentful.com/contact/' target='_blank' rel='noopener noreferrer'>Contact us</a>.
               </p>
