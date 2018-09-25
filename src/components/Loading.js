@@ -1,7 +1,8 @@
 import React from 'react'
+import Message from './Message'
 
 const Loading = () => {
-  return <p> Loading...</p>
+  return <Message>Loading...</Message>
 }
 
 export default Loading

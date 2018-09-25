@@ -6,7 +6,7 @@ import Layout from './components/Layout'
 import CourseOverview from './components/CourseOverview'
 import CoursesAll from './components/CoursesAll'
 import CoursesCategory from './components/CoursesCategory'
-
+import NotFound from './components/NotFound'
 import { Router } from '@reach/router'
 
 import ApolloClient from 'apollo-client'
@@ -17,7 +17,7 @@ import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
 import introspectionQueryResultData from './fragmentTypes.json'
 
-const { REACT_APP_SPACE_ID: SPACE_ID, REACT_APP_ACCESS_TOKEN: ACCESS_TOKEN, REACT_APP_LOCALE_CODE: LOCALE_CODE } = process.env
+const { REACT_APP_SPACE_ID: SPACE_ID, REACT_APP_ACCESS_TOKEN: ACCESS_TOKEN } = process.env
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData
 })
@@ -34,7 +34,7 @@ const client = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
     new HttpLink({
-      uri: `https://cdn.contentful.com/spaces/${SPACE_ID}/graphql/alpha?locale=${LOCALE_CODE}`,
+      uri: `https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}`,
       credentials: 'same-origin',
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`
@@ -55,6 +55,7 @@ ReactDOM.render((
         <CourseOverview path='/courses/:course-slug' />
         <CourseOverview path='/courses/:course-slug/lessons' />
         <CourseOverview path='courses/:course-slug/lessons/:lesson-slug' />
+        <NotFound default />
       </Router>
     </Layout>
   </ApolloProvider>
