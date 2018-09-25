@@ -25,8 +25,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "fragmentTypesScript": "node -r dotenv/config fragmentTypeFetch.js",
-    "lint": "eslint ./src",
-    "pre:commit": "npm run lint"
+    "lint": "eslint ./src"
   },
   "devDependencies": {
     "eslint": "^5.6.0",

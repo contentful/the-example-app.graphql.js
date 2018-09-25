@@ -17,7 +17,7 @@ import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
 import introspectionQueryResultData from './fragmentTypes.json'
 
-const { REACT_APP_SPACE_ID: SPACE_ID, REACT_APP_ACCESS_TOKEN: ACCESS_TOKEN, REACT_APP_LOCALE_CODE: LOCALE_CODE } = process.env
+const { REACT_APP_SPACE_ID: SPACE_ID, REACT_APP_ACCESS_TOKEN: ACCESS_TOKEN } = process.env
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData
 })
@@ -34,7 +34,7 @@ const client = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
     new HttpLink({
-      uri: `https://cdn.contentful.com/spaces/${SPACE_ID}/graphql/alpha?locale=${LOCALE_CODE}`,
+      uri: `https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}`,
       credentials: 'same-origin',
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`
