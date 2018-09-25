@@ -6,7 +6,7 @@ import Layout from './components/Layout'
 import CourseOverview from './components/CourseOverview'
 import CoursesAll from './components/CoursesAll'
 import CoursesCategory from './components/CoursesCategory'
-
+import NotFound from './components/NotFound'
 import { Router } from '@reach/router'
 
 import ApolloClient from 'apollo-client'
@@ -55,6 +55,7 @@ ReactDOM.render((
         <CourseOverview path='/courses/:course-slug' />
         <CourseOverview path='/courses/:course-slug/lessons' />
         <CourseOverview path='courses/:course-slug/lessons/:lesson-slug' />
+        <NotFound default />
       </Router>
     </Layout>
   </ApolloProvider>
