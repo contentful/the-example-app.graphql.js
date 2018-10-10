@@ -4,6 +4,7 @@ import Course from '../Course'
 import IntroLesson from '../IntroLesson'
 import Lesson from '../Lesson'
 import NavLink from '../NavLink'
+import SidebarMenu from '../SidebarMenu'
 
 it('renders the correct number of sidebar links and intro if lesson doesnt exist in collection', () => {
   const props = {}
@@ -15,6 +16,7 @@ it('renders the correct number of sidebar links and intro if lesson doesnt exist
   expect(wrapper.find(NavLink).length).toEqual(props.course.lessonsCollection.items.length + 1)
   expect(wrapper.find(IntroLesson).length).toEqual(1)
   expect(wrapper.find(Lesson).length).toEqual(0)
+  expect(wrapper.find(SidebarMenu).length).toEqual(1)
 })
 
 it('sends correct props to sidebar links', () => {
