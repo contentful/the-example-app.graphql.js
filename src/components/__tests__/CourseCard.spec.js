@@ -5,9 +5,9 @@ import { Link } from '@reach/router'
 
 it('renders the correct number of category links', () => {
   const props = {}
-  const categoriesCollection = {items: []}
-  for (let i = 0; i<3; i++) {
-    categoriesCollection.items.push({slug: i, title: `${i} title`})
+  const categoriesCollection = { items: [] }
+  for (let i = 0; i < 3; i++) {
+    categoriesCollection.items.push({ slug: i, title: `${i} title` })
   }
   props.course = {
     categoriesCollection,

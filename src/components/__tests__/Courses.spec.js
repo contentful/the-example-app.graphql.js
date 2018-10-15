@@ -3,9 +3,9 @@ import { shallow } from '../enzyme'
 import Courses from '../Courses'
 import CourseCard from '../CourseCard'
 import CategoriesSidebar from '../CategoriesSidebar'
-let wrapper;
+let wrapper
 const defaultProps = {
-  courseCollection: { items: []},
+  courseCollection: { items: [] },
   title: 'mytitle'
 }
 const renderWithProps = (props) => {
@@ -13,11 +13,11 @@ const renderWithProps = (props) => {
 }
 
 it('renders the category sidebar and courseCards', () => {
-  const courseCollection = {items: []}
-  for (let i = 0; i<3; i++) {
-    courseCollection.items.push({slug: i, title: `${i} title`})
+  const courseCollection = { items: [] }
+  for (let i = 0; i < 3; i++) {
+    courseCollection.items.push({ slug: i, title: `${i} title` })
   }
-  const props = Object.assign({}, defaultProps, {courseCollection})
+  const props = Object.assign({}, defaultProps, { courseCollection })
   renderWithProps(props)
   expect(wrapper.find(CategoriesSidebar).length).toEqual(1)
   expect(wrapper.find(CourseCard).length).toEqual(courseCollection.items.length)

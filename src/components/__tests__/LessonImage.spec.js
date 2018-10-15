@@ -4,7 +4,7 @@ import LessonImage from '../LessonImage'
 
 it('renders the image if it is included in props', () => {
   const props = {
-    image: {url: 'my.image.url'},
+    image: { url: 'my.image.url' },
     caption: 'my image caption'
   }
   const wrapper = shallow(<LessonImage {...props} />)

@@ -13,7 +13,7 @@ afterEach(() => {
 
 it('calls markdown helper', () => {
   const copy = 'some *markdown* copy'
-  shallow(<ModuleCopy {...{copy}} />)
+  shallow(<ModuleCopy {...{ copy }} />)
   expect(helpers.markdown).toBeCalled()
 })
 
@@ -61,12 +61,12 @@ it('does not render headline if prop does not exist', () => {
 
 it('does not render cta if link and title do not exist', () => {
   const ctaClassName = '.module-copy__cta'
-  let wrapper = shallow(<ModuleCopy {...{visualStyle: false}} />)
+  let wrapper = shallow(<ModuleCopy {...{ visualStyle: false }} />)
   expect(wrapper.find(ctaClassName).length).toEqual(0)
-  wrapper = shallow(<ModuleCopy {...{ctaLink: 'my.link'}} />)
+  wrapper = shallow(<ModuleCopy {...{ ctaLink: 'my.link' }} />)
   expect(wrapper.find(ctaClassName).length).toEqual(0)
-  wrapper = shallow(<ModuleCopy {...{ctaTitle: 'mytitle'}} />)
+  wrapper = shallow(<ModuleCopy {...{ ctaTitle: 'mytitle' }} />)
   expect(wrapper.find(ctaClassName).length).toEqual(0)
-  wrapper = shallow(<ModuleCopy {...{ctaTitle: 'title', ctaLink: 'link'}} />)
+  wrapper = shallow(<ModuleCopy {...{ ctaTitle: 'title', ctaLink: 'link' }} />)
   expect(wrapper.find(ctaClassName).length).toEqual(1)
 })

@@ -27,7 +27,7 @@ it('changes state when a code header is clicked', () => {
   expect(wrapper.state().active).toEqual('javascript')
   const codeHeader = wrapper.find(CodeHeader).first()
   codeHeader.simulate('click')
-  expect(wrapper.state().active).not.toEqual('javascript') //this is a hack
+  expect(wrapper.state().active).not.toEqual('javascript') // This is a hack
 })
 
 it('codeHeader components display special class when active = true', () => {
@@ -36,7 +36,7 @@ it('codeHeader components display special class when active = true', () => {
   }
   let wrapper = shallow(<CodeHeader {...props} />)
   expect(wrapper.hasClass('lesson-module-code__trigger--active')).toEqual(true)
-  wrapper = shallow(<CodeHeader {...{active: false}} />)
+  wrapper = shallow(<CodeHeader {...{ active: false }} />)
   expect(wrapper.hasClass('lesson-module-code__trigger--active')).toEqual(false)
 })
 
@@ -46,6 +46,6 @@ it('snippet components display special class when active = true', () => {
   }
   let wrapper = shallow(<Snippet {...props} />)
   expect(wrapper.hasClass('lesson-module-code__code--active')).toEqual(true)
-  wrapper = shallow(<Snippet {...{active: false}} />)
+  wrapper = shallow(<Snippet {...{ active: false }} />)
   expect(wrapper.hasClass('lesson-module-code__code--active')).toEqual(false)
 })

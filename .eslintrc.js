@@ -3,10 +3,12 @@ module.exports = {
     'plugins': [
       'standard',
       'promise',
-      'react'
+      'react',
+      'jest'
     ],
     'env': {
-      'node': true
+      'node': true,
+      'jest/globals': true
     },
     'rules': {
       "capitalized-comments": [
@@ -17,4 +19,4 @@ module.exports = {
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
     }
-}  
+}

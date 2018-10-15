@@ -13,6 +13,6 @@ afterEach(() => {
 
 it('calls markdown helper', () => {
   const copy = 'some *markdown* copy'
-  shallow(< LessonCopy {...{copy}} />)
+  shallow(< LessonCopy {...{ copy }} />)
   expect(helpers.markdown).toBeCalled()
 })
