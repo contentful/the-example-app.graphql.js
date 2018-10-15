@@ -1,18 +1,19 @@
 import React from 'react'
 import { markdown } from '../helpers'
+import { Link } from '@reach/router'
 
 const errorHighlightedCourse = '⚠️ The course is not published or does not exist.'
-const error = <div class='module-highlighted-course__content'><h2 class='module-highlighted-course__title'>{errorHighlightedCourse}</h2></div>
+const error = <div className='module-highlighted-course__content'><h2 className='module-highlighted-course__title'>{errorHighlightedCourse}</h2></div>
 const viewCourseLabel = 'View Course'
 
-const Categories = ({ categories }) => {
+export const Categories = ({ categories }) => {
   const categoryItems = []
   if (categories) {
     categories.forEach((category) => {
-      categoryItems.push(<a key={category.slug} class='module-highlighted-course__category' href={`/courses/categories/${category.slug}`}>{category.title}</a>)
+      categoryItems.push(<Link key={category.slug} className='module-highlighted-course__category' to={`/courses/categories/${category.slug}`}>{category.title}</Link>)
     })
     return (
-      <div class='module-highlighted-course__categories'>
+      <div className='module-highlighted-course__categories'>
         {categoryItems}
       </div>
     )

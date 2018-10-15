@@ -20,6 +20,8 @@
     "react-scripts": "^2.0.3"
   },
   "scripts": {
+    "prepush": "npm test",
+    "precommit": "npm run lint",
     "start": "react-scripts start",
     "build": "react-scripts build && cp build/index.html build/200.html",
     "test": "react-scripts test --env=jsdom",

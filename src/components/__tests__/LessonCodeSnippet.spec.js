@@ -24,7 +24,6 @@ it('renders CodeHeaders and Snippets', () => {
 
 it('changes state when a code header is clicked', () => {
   const wrapper = shallow(<LessonCodeSnippet {...defaultProps} />)
-  console.log(wrapper.state())
   expect(wrapper.state().active).toEqual('javascript')
   const codeHeader = wrapper.find(CodeHeader).first()
   codeHeader.simulate('click')
