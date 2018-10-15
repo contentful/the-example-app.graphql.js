@@ -36,8 +36,8 @@ it.skip('Categories creates a link for each category', () => {
     categories: [{ slug: '1' }, { slug: '2' }, { slug: '3' }]
   }
   const wrapper = render(<Categories {...props} />)
-  // Expect(wrapper.find(".module-highlighted-course__categories").length).toEqual(1) //todo why doesnt this work
-  // Expect(wrapper.find(Link).length).toEqual(props.categories.legnth)
+  expect(wrapper.find('.module-highlighted-course__categories').length).toEqual(1) // Todo why doesnt this work
+  expect(wrapper.find(Link).length).toEqual(props.categories.legnth)
 })
 
 it('ModuleHighlightedCourse renders without error if prop course exists', () => {

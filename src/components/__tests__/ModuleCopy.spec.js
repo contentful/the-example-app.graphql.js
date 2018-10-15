@@ -42,13 +42,13 @@ it('does not add --emphasized to class if visualStyle prop != Emphasized', () =>
     ctaLink: 'my.link.com'
   }
   const wrapper = shallow(<ModuleCopy {...props} />)
-  expect(wrapper.find('.module-copy--emphasized').length == 0).toEqual(true)
-  expect(wrapper.find('.module-copy__wrapper--emphasized').length == 0).toEqual(true)
-  expect(wrapper.find('.module-copy__first--emphasized').length == 0).toEqual(true)
-  expect(wrapper.find('.module-copy__headline--emphasized').length == 0).toEqual(true)
-  expect(wrapper.find('.module-copy__copy--emphasized').length == 0).toEqual(true)
-  expect(wrapper.find('.module-copy__second--emphasized').length == 0).toEqual(true)
-  expect(wrapper.find('.module-copy__cta--emphasized').length == 0).toEqual(true)
+  expect(wrapper.find('.module-copy--emphasized').length).toEqual(0)
+  expect(wrapper.find('.module-copy__wrapper--emphasized').length).toEqual(0)
+  expect(wrapper.find('.module-copy__first--emphasized').length).toEqual(0)
+  expect(wrapper.find('.module-copy__headline--emphasized').length).toEqual(0)
+  expect(wrapper.find('.module-copy__copy--emphasized').length).toEqual(0)
+  expect(wrapper.find('.module-copy__second--emphasized').length).toEqual(0)
+  expect(wrapper.find('.module-copy__cta--emphasized').length).toEqual(0)
 })
 
 it('does not render headline if prop does not exist', () => {

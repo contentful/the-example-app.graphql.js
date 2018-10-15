@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from '../enzyme'
-import LessonCodeSnippet from '../LessonCodeSnippet'
-import { Snippet, CodeHeader } from '../LessonCodeSnippet'
+import LessonCodeSnippet, { Snippet, CodeHeader } from '../LessonCodeSnippet'
 
 const defaultProps = {
   curl: 'curl code',
