@@ -15,8 +15,8 @@ const CoursesCategory = (props) => {
       <Courses courseCollection={courseCollection} title={category.title} />
     )
   }
-  return <ConnectedComponent query={coursesOfCategory} variables={{slug}}
-          errorCheck={errorCheck} success={success} />
+  return <ConnectedComponent query={coursesOfCategory} variables={{ slug }}
+    errorCheck={errorCheck} success={success} />
 }
 
 export default CoursesCategory

@@ -5,7 +5,7 @@ import { coursesOfCategory } from '../../schema'
 import CoursesCategory from '../CoursesCategory'
 import Courses from '../Courses'
 
-let wrapper;
+let wrapper
 const defaultProps = {
   'category-slug': 'best-category'
 }
@@ -39,7 +39,7 @@ it('errorCheck is set up correctly', () => {
 
 it('success renders Course with correct props', () => {
   const items = [
-    {title: '1', slug: 'slug1', linkedFrom: { entryCollection: []}}
+    { title: '1', slug: 'slug1', linkedFrom: { entryCollection: [] } }
   ]
   const data = {
     categoryCollection: {

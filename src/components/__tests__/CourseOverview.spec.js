@@ -5,7 +5,7 @@ import { courseBySlug } from '../../schema'
 import CourseOverview from '../CourseOverview'
 import Course from '../Course'
 
-let wrapper;
+let wrapper
 const defaultProps = {
   'course-slug': 'best-course',
   'lesson-slug': 'best-lesson'
@@ -40,7 +40,7 @@ it('errorCheck is set up correctly', () => {
 
 it('success renders Course with correct props', () => {
   const items = [
-    {title: '1', slug: 'slug1'}
+    { title: '1', slug: 'slug1' }
   ]
   const data = {
     courseCollection: {

@@ -5,7 +5,7 @@ import { courses } from '../../schema'
 import CoursesAll from '../CoursesAll'
 import Courses from '../Courses'
 
-let wrapper;
+let wrapper
 
 beforeEach(() => {
   wrapper = shallow(<CoursesAll />)
@@ -37,10 +37,10 @@ it('errorCheck is set up correctly', () => {
 
 it('success renders Course with correct props', () => {
   const items = [
-    {title: '1', slug: 'slug1'}
+    { title: '1', slug: 'slug1' }
   ]
-  const courseCollection= { items }
+  const courseCollection = { items }
   const success = wrapper.find(ConnectedComponent).first().prop('success')
-  const result = success({courseCollection})
+  const result = success({ courseCollection })
   expect(result).toEqual(<Courses courseCollection={courseCollection} title={'All courses'} />)
 })

@@ -4,7 +4,7 @@ import ConnectedComponent from '../ConnectedComponent'
 import { home } from '../../schema'
 import Home from '../Home'
 
-let wrapper;
+let wrapper
 
 beforeEach(() => {
   wrapper = shallow(<Home />)

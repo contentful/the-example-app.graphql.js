@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from '../enzyme'
 import Breadcrumb from '../Breadcrumb'
 import { Link } from '@reach/router'
-let location, wrapper;
+let location, wrapper
 beforeEach(() => {
   location = {
     pathname: 'this/is/my/pathname-very-fancy'
@@ -11,7 +11,7 @@ beforeEach(() => {
 })
 
 it('always adds a home link', () => {
-  const myWrapper = shallow(<Breadcrumb location={{pathname: 'blah'}}/>)
+  const myWrapper = shallow(<Breadcrumb location={{ pathname: 'blah' }}/>)
   expect(myWrapper.contains(<li key='home'><Link to='/'>Home</Link></li>)).toEqual(true)
 })
 

@@ -3,10 +3,9 @@ import { shallow } from '../enzyme'
 import CategoriesSidebar from '../CategoriesSidebar'
 import ConnectedComponent from '../ConnectedComponent'
 import { categories } from '../../schema'
-import SidebarMenu from '../SidebarMenu'
 import NavLink from '../NavLink'
 
-let wrapper;
+let wrapper
 
 beforeEach(() => {
   wrapper = shallow(<CategoriesSidebar />)
@@ -38,9 +37,9 @@ it('errorCheck is set up correctly', () => {
 
 it('success renders NavLinks', () => {
   const items = [
-    {title: '1', slug: 'slug1'},
-    {title: '2', slug: 'slug2'},
-    {title: '3', slug: 'slug3'},
+    { title: '1', slug: 'slug1' },
+    { title: '2', slug: 'slug2' },
+    { title: '3', slug: 'slug3' }
   ]
   const data = {
     categoryCollection: {

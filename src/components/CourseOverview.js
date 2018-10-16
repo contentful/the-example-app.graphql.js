@@ -14,8 +14,8 @@ const CourseOverview = (props) => {
       <Course course={course} lessonSlug={lessonSlug} />
     )
   }
-  return <ConnectedComponent query={courseBySlug} variables={{slug}}
-          errorCheck={errorCheck} success={success} />
+  return <ConnectedComponent query={courseBySlug} variables={{ slug }}
+    errorCheck={errorCheck} success={success} />
 }
 
 export default CourseOverview
