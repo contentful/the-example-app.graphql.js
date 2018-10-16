@@ -12,6 +12,8 @@ export const Snippet = (props) => {
 
 export const CodeHeader = ({ id, title, active, onClick }) => {
   return (
+    // disable valid anchor tag rule
+    // eslint-disable-next-line
     <a key={id}
       onClick={() => onClick(id)}
       className={'lesson-module-code__trigger ' + (active ? ' lesson-module-code__trigger--active' : '')}
