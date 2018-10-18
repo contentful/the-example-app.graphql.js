@@ -2,7 +2,7 @@ import React from 'react'
 import { capitalize } from '../helpers'
 import PropTypes from 'prop-types'
 
-const Snippet = (props) => {
+export const Snippet = (props) => {
   return (
     <div className={'lesson-module-code__code' + (props.active ? ' lesson-module-code__code--active' : '')} id={props.id}>
       <pre><code className={props.type + ' hljs'}>{props.code}</code></pre>
@@ -10,8 +10,10 @@ const Snippet = (props) => {
   )
 }
 
-const CodeHeader = ({ id, title, active, onClick }) => {
+export const CodeHeader = ({ id, title, active, onClick }) => {
   return (
+    // Disable valid anchor tag rule
+    // eslint-disable-next-line
     <a key={id}
       onClick={() => onClick(id)}
       className={'lesson-module-code__trigger ' + (active ? ' lesson-module-code__trigger--active' : '')}

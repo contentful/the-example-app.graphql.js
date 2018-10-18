@@ -73,32 +73,6 @@ const courseBySlug = gql`query CourseBySlug($slug: String!) {
 ${courseFragment}
 ${lessonFragment}`
 
-// Const lessonBySlug = gql`query LessonBySlug($slug: String!) {
-//   LessonCollection(where: {slug: $slug}) {
-//     Items {
-//       Title
-//       Slug
-//       ModulesCollection {
-//         Items {
-//           ... on LessonCodeSnippets {
-//             ...LessonCodeSnippetFragment
-//           }
-//           ... on LessonImage {
-//             ...LessonImageFragment
-//           }
-//           ... on LessonCopy {
-//             ...LessonCopyFragment
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// ${LessonCodeSnippetFragment}
-// ${LessonImageFragment}
-// ${LessonCopyFragment}
-// `
-
 const coursePreviewFragment = gql`
 fragment CoursePreviewFragment on Course {
   slug
@@ -154,9 +128,51 @@ query Categories {
 }
 ${categoryFragment}`
 
+const highlightedCourseFragment = gql`fragment HighlightedCourse on Course {
+  slug
+  title
+  shortDescription
+  image {
+    url
+  }
+}`
+
+const home = gql`{
+  layoutCollection(limit: 1) {
+    items {
+      title
+      slug
+      contentModulesCollection {
+        items {
+          ... on LayoutHighlightedCourse {
+            course {
+              ... HighlightedCourse
+            }
+          }
+          ... on LayoutCopy {
+            headline
+            copy
+            ctaTitle
+            ctaLink
+            visualStyle
+          }
+          ... on LayoutHeroImage {
+            title
+            headline
+            backgroundImage {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+${highlightedCourseFragment}`
+
 export {
+  home,
   courseBySlug,
-  // LessonBySlug,
   courses,
   coursesOfCategory,
   categories
