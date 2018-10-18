@@ -16,9 +16,10 @@ jobs:
     docker:
       - image: cypress/base:8
     steps:
+      - checkout
       - restore_cache:
           keys:
-            - package-v2-{{ checksum "./test/e2e/package.json" }}
+            - package-v2-{{ checksum "test/e2e/package.json" }}
             - package-v2
       - run:
           name: Install e2e tests dependencies
@@ -26,7 +27,7 @@ jobs:
             cd test/e2e
             npm i
       - save_cache:
-          key: package-v2-{{ checksum "./test/e2e/package.json" }}
+          key: package-v2-{{ checksum "test/e2e/package.json" }}
           paths:
             - ./test/e2e/node_modules
       - run:
