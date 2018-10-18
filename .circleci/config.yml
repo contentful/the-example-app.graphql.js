@@ -30,6 +30,7 @@ jobs:
           key: package-v2-{{ checksum "test/e2e/package.json" }}
           paths:
             - ./test/e2e/node_modules
+      - run: npm install
       - run:
           name: Start server and run e2e tests
           command: npm run test:e2e
