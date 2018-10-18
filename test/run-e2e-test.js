@@ -33,7 +33,6 @@ if (argv.dev) {
     'open'
   ]
 }
-execa()
 execa(cypressBin, [
   ...command,
   '--env',
