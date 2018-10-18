@@ -13,6 +13,8 @@ jobs:
       - run: npm test
       - run: bash <(curl -s https://codecov.io/bash)
   e2e:
+    docker:
+      - image: cypress/base:8
     steps:
       - restore_cache:
           keys:
