@@ -12,6 +12,24 @@ jobs:
       - run: npm install
       - run: npm test
       - run: bash <(curl -s https://codecov.io/bash)
+  e2e:
+    steps:
+      - restore_cache:
+          keys:
+            - package-v2-{{ checksum "./test/e2e/package.json" }}
+            - package-v2
+      - run:
+          name: Install e2e tests dependencies
+          command: |
+            cd test/e2e
+            npm i
+      - save_cache:
+          key: package-v2-{{ checksum "./test/e2e/package.json" }}
+          paths:
+            - ./test/e2e/node_modules
+      - run:
+          name: Start server and run e2e tests
+          command: npm run test:e2e
 workflows:
   version: 2
   build_and_test:

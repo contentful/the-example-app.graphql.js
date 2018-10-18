@@ -1,0 +1,32 @@
+{
+  "name": "the-example-app-e2e-tests",
+  "version": "1.0.0",
+  "description": "End to end tests for the example app from Contentful",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint",
+    "precommit": "npm run lint",
+    "prepush": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contentful/the-example-app-e2e-tests.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/contentful/the-example-app-e2e-tests/issues"
+  },
+  "homepage": "https://github.com/contentful/the-example-app-e2e-tests#readme",
+  "devDependencies": {
+    "cypress": "^2.1.0",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3"
+  }
+}
