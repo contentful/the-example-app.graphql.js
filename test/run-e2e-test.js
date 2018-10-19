@@ -11,7 +11,7 @@ const {
 
 const TEST_PORT = parseInt(PORT)
 
-const cypressBin = resolve(__dirname, 'e2e', 'node_modules', '.bin', 'cypress')
+const cypressBin = resolve('node_modules', '.bin', 'cypress')
 const env = [
   `LANGUAGE=nodejs`,
   `CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE_ID}`,
