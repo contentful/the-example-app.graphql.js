@@ -8,7 +8,13 @@ module.exports = {
     ],
     'env': {
       'node': true,
-      'jest/globals': true
+      'jest/globals': true,
+      'mocha': true
+    },
+    'globals': {
+      'Cypress': true,
+      'cy': true,
+      'expect': true
     },
     'rules': {
       "capitalized-comments": [

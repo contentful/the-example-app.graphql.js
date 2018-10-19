@@ -12,8 +12,20 @@ jobs:
       - run: npm install
       - run: npm test
       - run: bash <(curl -s https://codecov.io/bash)
+  e2e:
+    docker:
+      - image: cypress/base:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - run:
+          name: Start server and run e2e tests
+          command: npm run test:e2e
 workflows:
   version: 2
   build_and_test:
     jobs:
       - unit
+      - e2e

@@ -1,0 +1,7 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "fixturesFolder": false,
+  "integrationFolder": "./test/e2e/specs",
+  "supportFile": false,
+  "pluginsFile": false
+}
