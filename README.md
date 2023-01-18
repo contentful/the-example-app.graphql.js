@@ -1,3 +1,6 @@
+> **Note**: This repo is no longer officially maintained as of Jan, 2023.
+> Feel free to use it, fork it and patch it for your own needs.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## The Graphql and JS example app
